@@ -3,29 +3,28 @@ import { Button, Form, Input } from "antd";
 import "./Login.scss";
 import { UserContext } from "../../context/UserContext/UserState";
 import { useNavigate } from "react-router-dom";
-import {notification } from 'antd';
+import { notification } from "antd";
 
 const Login = () => {
   const { login } = useContext(UserContext);
   const onFinish = (values) => {
-    login(values)
+    login(values);
     notification.success({
-      message: 'Bienvenid@'
+      message: "Bienvenid@",
     });
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
       const foundToken = JSON.parse(localStorage.getItem("token"));
       if (foundToken) {
-      navigate("/profile")
-    }
-    },2000)
-
-}, [login])
+        navigate("/profile");
+      }
+    }, 2000);
+  }, [login]);
   return (
     <div className="login-container">
       <Form
@@ -57,9 +56,8 @@ const Login = () => {
               message: "Please input your email!",
             },
             {
-              type: "regexp",
-              pattern: "^w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$",
-              message: "Format is wrong",
+              pattern: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
+              message: "Please enter a valid email",
             },
           ]}
         >

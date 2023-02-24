@@ -1,0 +1,23 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  form {
+    background: linear-gradient(
+      90deg,
+      rgba(182, 178, 246, 1) 0%,
+      rgba(9, 103, 121, 1) 35%,
+      rgba(0, 215, 255, 1) 100%
+    );
+    padding: 2rem;
+    border-radius: 5px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.26);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.26);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.26);
+  }
+}
+.btn-container{
+    display: flex;
+    justify-content: flex-start;
+}

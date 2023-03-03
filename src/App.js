@@ -9,6 +9,9 @@ import { ProductsProvider } from "./context/ProductsContext/ProductsState";
 import Cart from "./components/Cart/Cart";
 import { OrdersProvider } from "./context/OrdersContext/OrdersState";
 import Admin from "./components/Admin/Admin";
+import PrivateZone from "./guards/PrivateZone";
+import AdminZone from "./guards/AdminZone";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -21,10 +24,24 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route
+                  path="/profile"
+                  element={
+                    <PrivateZone>
+                      <Profile />
+                    </PrivateZone>
+                  }
+                />
                 <Route path="/cart" element={<Cart />} />
-                <Route path="/admin" element={<Admin />} />
-
+                <Route
+                  path="/admin"
+                  element={
+                    <AdminZone>
+                      <Admin />
+                    </AdminZone>
+                  }
+                />
+                <Route path="*" element={<NotFound/>} />
               </Routes>
             </OrdersProvider>
           </ProductsProvider>
